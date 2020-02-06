@@ -32,34 +32,35 @@ Things you may want to cover:
 ### Association
 - has_many  :groups  ,through: user_groups
 - has_many  :messages
+- has_many  :user_groups
 
 ## groupsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|group|text|null: false|
-|user_id|integer|null: false, foreign_key: true|
+|name|strig|null: false|
 ### Association
 - has_many :user_groups
 - has_many :users , through: user_groups
 
+
 ### user_groupsテーブル
 |Culum|Type|Options|
 |-----|----|-------|
-|user_id|integer|null: false|
-|group_id|integer|null: false|
+|user_id|integer|null: false, foreign_key: true|
+|group_id|integer|null: false, foreign_key: true|
 ### Association
-- belongs_to :user_id
-- belongs_to : group_id
+- belongs_to : user|
+- belongs_to : group|
 
 ## messagesテーブル
 |Column|Type|Options|
 |------|----|-------|
-|body|text|null: false|
-|image|string|null: false|
+|body|text||
+|image|string||
 |group_id|integer|null: false, foreign_key: true|
 |user_id|integer|null: false, foreign_key: true|
 ### Association
 - belongs_to : group
-- has_many : users
+- belongs_to : user
 
 
