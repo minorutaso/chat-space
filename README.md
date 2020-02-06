@@ -30,9 +30,8 @@ Things you may want to cover:
 |password|string|null: false|
 |username|string|null: false|
 ### Association
-- belongs_to :email
-- belongs_to :password
-- belongs_to :username
+- has_many  :groups  ,through: user_groups
+- has_many  :messages
 
 ## groupsテーブル
 |Column|Type|Options|
@@ -40,8 +39,8 @@ Things you may want to cover:
 |group|text|null: false|
 |user_id|integer|null: false, foreign_key: true|
 ### Association
-- belongs_to :user_id
-- belongs_to :group
+- has_many :user_groups
+- has_many :users , through: user_groups
 
 ### user_groupsテーブル
 |Culum|Type|Options|
@@ -60,8 +59,7 @@ Things you may want to cover:
 |group_id|integer|null: false, foreign_key: true|
 |user_id|integer|null: false, foreign_key: true|
 ### Association
-- belongs_to : group_id
-- belongs_to : user_id
-- has_many : body
-- has_many : image
+- belongs_to : group
+- has_many : users
+
 
