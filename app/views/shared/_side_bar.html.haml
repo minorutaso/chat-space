@@ -2,11 +2,11 @@
 .sidebar
   .sidebar__header
     .sidebar__header__info
-      yuki
+      = current_user.name
       .sidebar__header__info__btn
         = link_to "#", class: "sidebar__header__info__btn sidebar__header__info__btn--post" do
           = icon('fa', 'edit', class: "sidebar__header__info__btn--icon")
-        = link_to "#", class: "sidebar__header__info__btn sidebar__header__info__btn--post" do
+        = link_to edit_user_path(current_user), class: "sidebar__header__info__btn sidebar__header__info__btn--post" do
           = icon('fa', 'cog', class: "sidebar__header__info__btn--icon")
   .group__room
     = link_to "#", class: "group__room--btn" do
