@@ -1,0 +1,40 @@
+.mainchat  
+  .mainchat__header
+    .mainchat__header__groupname
+      部屋名
+      .mainchat__header__groupname__member
+        %ul
+          member :
+        .mainchat__header__groupname__member__list
+          %li 
+            yuki
+    .mainchat__header__edit
+      = link_to "#", class: "mainchat__header__edit--btn" do
+        Edit
+  .message
+    .message__box
+      .mainchat__box__info
+        .mainchat__box__user
+          huyu
+        .mainchat__box__data
+          2000/12/12(sat) 21:21:21
+      .mainchat__box__text
+        冬です
+    .message__box
+      .mainchat__box__info
+        .mainchat__box__user
+          haru
+        .mainchat__box__data
+          2000/12/12(sat) 21:21:21
+      .mainchat__box__text
+        春です
+  .foom
+    .foom__box
+      .foom__box__input
+        %input{placeholder:"type a message" ,class:"foom__box__input__text" ,type:"text" }
+        %label{class:"foom__box__input__label"}
+          = icon('fas', 'image', class: "foom__box__input__image--btn")
+          %input{type:"file",class:"foom__box__input__image__file"}
+      .foom__box__send
+        %input{type:"submit" ,name:"commit", value:"Send" ,class:"foom__box__send foom__box__send--btn" ,data_disable_with:"Send"}
+
