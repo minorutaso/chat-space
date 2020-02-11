@@ -4,22 +4,17 @@
     .sidebar__header__info
       = current_user.name
       .sidebar__header__info__btn
-        = link_to "#", class: "sidebar__header__info__btn sidebar__header__info__btn--post" do
+        = link_to new_group_path(), class: "sidebar__header__info__btn sidebar__header__info__btn--post" do
+          %i.fa.fa-pencil-square-o.sidebar__header__info__btn--icon
           = icon('fa', 'edit', class: "sidebar__header__info__btn--icon")
         = link_to edit_user_path(current_user), class: "sidebar__header__info__btn sidebar__header__info__btn--post" do
           = icon('fa', 'cog', class: "sidebar__header__info__btn--icon")
-  .group__room
-    = link_to "#", class: "group__room--btn" do
-      部屋名
-    .group__room__name
-      何もない
-  .group__room
-    = link_to "#", class: "group__room--btn" do
-      部屋名
-    .group__room__name
-      何もない
-  .group__room
-    = link_to "#", class: "group__room--btn" do
-      部屋名
-    .group__room__name
-      何もない
+  .group__room__list 
+    - current_user.groups.each do |group|       
+      .group
+        = link_to "#", class: "group__room--btn" do
+          .group__name
+            = group.name
+          .group__message
+            何もない
+  
