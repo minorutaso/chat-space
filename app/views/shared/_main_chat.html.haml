@@ -1,40 +1,25 @@
 .mainchat  
   .mainchat__header
     .mainchat__header__groupname
-      部屋名
+      = @group.name
       .mainchat__header__groupname__member
-        %ul
-          member :
+        member :
         .mainchat__header__groupname__member__list
-          %li 
-            yuki
+          - @group.group_users.each do |group_user|
+            = group_user.user.name
     .mainchat__header__edit
-      = link_to "#", class: "mainchat__header__edit--btn" do
+      = link_to edit_group_path(@group), class: "mainchat__header__edit--btn" do
         Edit
-  .message
-    .message__box
-      .mainchat__box__info
-        .mainchat__box__user
-          huyu
-        .mainchat__box__data
-          2000/12/12(sat) 21:21:21
-      .mainchat__box__text
-        冬です
-    .message__box
-      .mainchat__box__info
-        .mainchat__box__user
-          haru
-        .mainchat__box__data
-          2000/12/12(sat) 21:21:21
-      .mainchat__box__text
-        春です
+  .messagebox
+    = render @messages
+    
   .foom
     .foom__box
       .foom__box__input
-        %input{placeholder:"type a message" ,class:"foom__box__input__text" ,type:"text" }
-        %label{class:"foom__box__input__label"}
-          = icon('fas', 'image', class: "foom__box__input__image--btn")
-          %input{type:"file",class:"foom__box__input__image__file"}
-      .foom__box__send
-        %input{type:"submit" ,name:"commit", value:"Send" ,class:"foom__box__send foom__box__send--btn" ,data_disable_with:"Send"}
-
+        = form_for [@group, @message] do |f|
+          = f.text_field :content, class: 'foom__box__input__text', placeholder: 'type a message'
+          = f.label :image, class: 'foom__box__input__label' do
+            = icon('fas', 'image', class: "foom__box__input__image--btn")
+            = f.file_field :image, class: 'foom__box__input__image__file'
+          .foom__box__send
+            = f.submit 'Send', class: 'foom__box__send foom__box__send--btn'
