@@ -62,6 +62,28 @@ $('#new_message').on('submit', function(e){
     })
     .always(function(){
         $('.foom__box__send--btn').removeAttr('disabled');
-    });
-})
+    })
+    })
+    var reloadMessages = function() {
+        last_message_id = $('.message:last').data("message-id");
+        $.ajax({
+            url: "api/messages",
+            type: 'get',
+            dataType: 'json',
+            data: {id: last_message_id}
+        })
+        .done(function(messages) {
+            if (messages.length !== 0) {
+            var insertHTML = '';
+            $.each(messages, function(i, message) {
+            insertHTML += buildHTML(message)
+            });
+        $('.messagebox').append(insertHTML);
+        $('.messagebox').animate({ scrollTop: $('.messagebox')[0].scrollHeight});
+        }   
+        })
+    };
+    if (document.location.href.match(/\/groups\/\d+\/messages/)) {
+        setInterval(reloadMessages, 7000);
+      }
 });
