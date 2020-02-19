@@ -12,7 +12,7 @@
             display: flex;
             text-align: center;
             justify-content: space-between;
-            border-bottom: solid 1px blue;
+            border-bottom: solid 1px gray;
             &__groupname{//部屋名
                 color: #333333;
                 font-size: 20;
@@ -131,7 +131,7 @@
         &__header{
             background-color: #253141;
             height: 100px;
-            color: #fffaaf;
+            color: white;
             display: flex; //子要素を中央に
             align-items: center;//もじとアイコンを中央に
             &__info{//ログイン者表示
